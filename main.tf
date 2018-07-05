@@ -2,8 +2,6 @@ provider "aws" {
   region = "us-west-1"
 }
 
-data "aws_availability_zones" "available" {}
-
 resource "aws_security_group" "instance" {
   name = "rest-experiment"
 
@@ -29,14 +27,14 @@ resource "aws_security_group" "instance" {
   }
 }
 
-resource "aws_launch_configuration" "example" {
-  image_id        = "ami-8d948ced"
+resource "aws_instance" "rest-experiment" {
+  ami        = "ami-8d948ced"
   instance_type   = "t2.micro"
-  key_name        = "testInstanceKeyPair"
-  security_groups = ["${aws_security_group.instanced.id}"]
+  key_name        = "<PUT YOUR KEY NAME HERE>"
+  security_groups = ["${aws_security_group.instance.name}"]
   user_data       = "${file("setup.sh")}"
 
-  lifecycle {
-    create_before_destroy = true
+  tags {
+    Name = "rest-experiment"
   }
 }
