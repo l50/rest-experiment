@@ -8,7 +8,7 @@ Essentially, this will stand up an Ubuntu 16.04 instance in AWS which is running
 1. Clone into this repo
 2. Install terraform
 3. Run ```terraform init``` 
-4. Add your AWS key pair name to ```main.tf``` in the ```<PUT YOUR KEY NAME HERE>``` placeholder
+4. Add your AWS key pair name to ```terraform.tfvars``` in the ```<PUT YOUR KEY NAME HERE>``` placeholder
 5. Run ```terraform apply```
 6. Find the basic rest endpoint running at the public hostname associated with the created EC2 instance
 

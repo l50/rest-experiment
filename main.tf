@@ -30,7 +30,7 @@ resource "aws_security_group" "instance" {
 resource "aws_instance" "rest-experiment" {
   ami        = "ami-8d948ced"
   instance_type   = "t2.micro"
-  key_name        = "<PUT YOUR KEY NAME HERE>"
+  key_name        = "${var.key_name}"
   security_groups = ["${aws_security_group.instance.name}"]
   user_data       = "${file("setup.sh")}"
 
